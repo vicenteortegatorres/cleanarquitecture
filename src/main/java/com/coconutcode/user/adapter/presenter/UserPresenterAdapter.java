@@ -24,10 +24,19 @@ public class UserPresenterAdapter {
     @RequestMapping(value = USER_PATH, method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody UserView user) {
         try {
-            return new ResponseEntity<>(new UserView(createUserUseCase.createUser(new User(user.getUsername()))),
-                    HttpStatus.OK);
+            return createOkResponse(user);
         } catch (MandatoryValueNotIncludedException mandatoryValueNotIncluded){
-            return new ResponseEntity<>(mandatoryValueNotIncluded.getMessage(), HttpStatus.BAD_REQUEST);
+            return createBadRequestResponse(mandatoryValueNotIncluded);
         }
+    }
+
+    private ResponseEntity<String> createBadRequestResponse(
+            MandatoryValueNotIncludedException mandatoryValueNotIncluded) {
+        return new ResponseEntity<>(mandatoryValueNotIncluded.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    private ResponseEntity<UserView> createOkResponse(@RequestBody UserView user) {
+        return new ResponseEntity<>(new UserView(createUserUseCase.createUser(new User(user.getUsername()))),
+				HttpStatus.OK);
     }
 }

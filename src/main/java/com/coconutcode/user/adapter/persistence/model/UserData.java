@@ -1,10 +1,13 @@
 package com.coconutcode.user.adapter.persistence.model;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@NoArgsConstructor
 @Entity
 public class UserData {
     @Id
@@ -12,9 +15,6 @@ public class UserData {
     private Long id;
 
     private String username;
-
-    public UserData(){
-    }
 
     public UserData(String username){
         this.username = username;
