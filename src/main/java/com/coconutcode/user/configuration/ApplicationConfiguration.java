@@ -1,6 +1,7 @@
 package com.coconutcode.user.configuration;
 
 import com.coconutcode.user.adapter.persistence.UserPersistenceAdapter;
+import com.coconutcode.user.adapter.presenter.UserPresenterAdapter;
 import com.coconutcode.user.external.database.UserRepository;
 import com.coconutcode.user.usecases.CreateUser;
 import com.coconutcode.user.usecases.CreateUserUseCase;
@@ -18,5 +19,10 @@ public class ApplicationConfiguration {
     @Bean
     public UserPersistenceAdapter createUserPersistenceAdapter(UserRepository userRepository) {
         return new UserPersistenceAdapter(userRepository);
+    }
+
+    @Bean
+    public UserPresenterAdapter createUserPresenterAdapter(CreateUserUseCase createUserUseCase) {
+        return new UserPresenterAdapter(createUserUseCase);
     }
 }
