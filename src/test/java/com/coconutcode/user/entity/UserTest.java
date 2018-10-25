@@ -8,7 +8,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserDataTest {
+public class UserTest {
     @Test(expected = UsernameNotIncluded.class)
     public void userNotCreatedIfUsernameIsNotIncluded() throws UsernameNotIncluded {
         new User(null);
