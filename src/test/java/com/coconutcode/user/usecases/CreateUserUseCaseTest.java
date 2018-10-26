@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CreateUserDataUseCaseTest {
+public class CreateUserUseCaseTest {
     @Mock
     private User user;
 
